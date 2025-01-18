@@ -17,10 +17,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=352, help='testing size')
 opt = parser.parse_args()
 
-dataset_path = '/home/wyq/dataset/RS-SOD/'
+dataset_path = './dataset/test_dataset/'
 
 model = RoCAFENet()
-model.load_state_dict(torch.load('/home/wyq/work/tyf_wyq_shiyan/EORSSD/MECS+GGCA+GCSA_decoder_11+_ggca3qkv1/models/GeleNet_2/RoCAFENet.pth.42'))
+model.load_state_dict(torch.load('./models/RoCAFENet.pth'))
 
 model.cuda()
 model.eval()
@@ -29,7 +29,7 @@ test_datasets = ['EORSSD']
 #test_datasets = ['EORSSD','ORSSD','ors-4199']
 
 for dataset in test_datasets:
-    save_path = './models/baseline2_1+MECS+GGCA+GCSA_decoder_11+__ggca3qkv1_42/' + dataset + '/'
+    save_path = './models/RoCAFENet/' + dataset + '/'
     if not os.path.exists(save_path):
         os.makedirs(save_path)
       
