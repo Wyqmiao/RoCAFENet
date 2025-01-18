@@ -20,14 +20,6 @@ This project provides the code and results for 'Robust Salient Object Detection 
 
 Note: Our main model is under './model/RoCAFENet.py'
 
-
-# Pre-trained model and testing
-1. Download the pre-trained models on [ORSSD](https://pan.baidu.com/s/1E6Llbauan4QXfgOvnrcP1w) (code: qga2), [EORSSD](https://pan.baidu.com/s/1dY_9UtDb5GVb9rFyBNDSCA) (code: ahm7), and [ORSI-4199](https://pan.baidu.com/s/1NPdsGBW72vGXgsZxYrJCcA) (code: 5h3u), and put them in './models/'.
-
-2. Modify paths of pre-trained models and datasets.
-
-3. Run test.py.
-
 # Quantitative comparison
 Quantitative comparison with state-of-the-art methods on the ORSSD and EORSSD datasets.
    <div align=center>
