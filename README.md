@@ -3,7 +3,7 @@ This project provides the code and results for 'Robust Salient Object Detection 
 
 # Network Architecture
    <div align=center>
-   <img src=" ">
+   <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/RoCAFENet.jpg">
    </div>
    
    
@@ -33,4 +33,6 @@ Quantitative comparison with state-of-the-art methods on the ORSSD, EORSSD and O
 
 # Visualization
 Visualization comparing RoCAFENet with eight advanced methods on the ORSI-4199 dataset.
-   
+<div align=center>
+<img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/Visualization comparison.jpg">
+</div>
