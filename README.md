@@ -29,10 +29,18 @@ Note: Our main model is under './model/RoCAFENet.py'
 3. Run test.py.
 
 # Quantitative comparison
-Quantitative comparison with state-of-the-art methods on the ORSSD, EORSSD and ORSI-4199 datasets.
-
+Quantitative comparison with state-of-the-art methods on the ORSSD and EORSSD datasets.
+   <div align=center>
+   <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/table1.jpg">
+   </div>
+   
+Quantitative comparison with state-of-the-art methods on the ORSI-4199 dataset.
+   <div align=center>
+   <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/table2.jpg">
+   </div>
+   
 # Visualization
 Visualization comparing RoCAFENet with eight advanced methods on the ORSI-4199 dataset.
-<div align=center>
-<img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/Visualization comparison.jpg">
-</div>
+   <div align=center>
+   <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/Visualization comparison.jpg">
+   </div>
