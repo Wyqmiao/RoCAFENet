@@ -14,7 +14,7 @@ This project provides the code and results for 'Robust Salient Object Detection 
    We provide saliency maps of our RoCAFENet on three datasets in './RoCAFENet_saliencymapT.rar' 
    
 # Training
-   Download [pvt_v2_b2.pth](https://pan.baidu.com/s/1U6Bsyhu0ynXckU6EnJM35w) (code: sxiq), and put it in './model/'. 
+   Download [pvt_v2_b2.pth](https://pan.baidu.com/s/1F_W3XllVk8UGZ5oJpFWwHQ) (code: db7r), and put it in './model/'. 
    
    Modify paths of datasets, then run train.py.
 
