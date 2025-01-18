@@ -35,7 +35,6 @@ Quantitative comparison with state-of-the-art methods on the ORSSD and EORSSD da
    </div>
    
 Quantitative comparison with state-of-the-art methods on the ORSI-4199 dataset.
-   <div align=center>
    <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/table2.jpg">
    </div>
    
