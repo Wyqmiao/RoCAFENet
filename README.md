@@ -28,12 +28,10 @@ The overall framework of RoCAFE-Net based on the encoder-decoder architecture ma
 Note: Our main model is under './model/RoCAFENet.py'
 
 ## 🖼️ Quantitative comparison
-Quantitative comparison with state-of-the-art methods on the ORSSD and EORSSD datasets.
    <div align=center>
    <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/table1.jpg">
    </div>
    
-Quantitative comparison with state-of-the-art methods on the ORSI-4199 dataset.
    <div align=center>
    <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/table2.jpg">
    </div>
