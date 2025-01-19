@@ -17,7 +17,7 @@ The overall framework of RoCAFE-Net based on the encoder-decoder architecture ma
 ## 🎮 Requirements
    python 3.8 + pytorch 1.9.0
 
-## 🎫 Saliency maps
+## 🚀 Saliency maps
    We provide saliency maps of our RoCAFENet on three datasets in './RoCAFENet_saliencymapT.rar' 
    
 ## 🎈 Training
@@ -38,7 +38,7 @@ Quantitative comparison with state-of-the-art methods on the ORSI-4199 dataset.
    <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/table2.jpg">
    </div>
    
-## 🖼️ Visualization
+## 🎫 Visualization
 Visualization comparing RoCAFENet with eight advanced methods on the ORSI-4199 dataset.
    <div align=center>
    <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/Visualization comparison.jpg">
