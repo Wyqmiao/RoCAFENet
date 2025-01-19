@@ -37,7 +37,7 @@ Note: Our main model is under './model/RoCAFENet.py'
    </div>
    
 ## 🎫 Visualization
-Visualization comparing RoCAFENet with eight advanced methods on the ORSI-4199 dataset.
    <div align=center>
    <img src="https://github.com/Wyqmiao/RoCAFENet/blob/main/images/Visualization comparison.jpg">
    </div>
+Visualization comparison of prediction results from 8 methods, including 6 ORSI-SOD methods and 2 NSI-SOD methods. (a) ORSIs. (b) GT. (c) Our Method. (d) MJRBM. (e) ACCoNet. (f) MCCNet. (g) SeaNet. (h) UG2L. (i) SDNet. (j) VST. (k) ICON.
