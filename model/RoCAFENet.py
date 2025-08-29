@@ -43,11 +43,7 @@ class BasicConv2dReLu(nn.Module):
         x = self.relu(x)
         return x
 
-def global_median_pooling(x):  
 
-    median_pooled = torch.median(x.view(x.size(0), x.size(1), -1), dim=2)[0]
-    median_pooled = median_pooled.view(x.size(0), x.size(1), 1, 1)
-    return median_pooled 
 
 
 class MCA(nn.Module):
@@ -136,56 +132,6 @@ class CSDPM(nn.Module):
         return out
 
  
-class DiagonalLowerSplit(nn.Module):
-    def __init__(self):
-        super(DiagonalLowerSplit, self).__init__()
-
-    def forward(self, x):
-        batch_size, channels, height, width = x.size()
-        
-        mask = torch.triu(torch.ones(height, width), diagonal=1).to(x.device)
-        
-        x = x * (1 - mask.unsqueeze(0).unsqueeze(0))  
-        
-        return x
-
-class DiagonalUpperSplit(nn.Module):
-    def __init__(self):
-        super(DiagonalUpperSplit, self).__init__()
-
-    def forward(self, x):
-        batch_size, channels, height, width = x.size()
-        
-        mask = torch.tril(torch.ones(height, width), diagonal=0).to(x.device)
-        
-        x = x * mask.unsqueeze(0).unsqueeze(0)  
-        
-        return x
-
-class DIRB(nn.Module): 
-    def __init__(self):
-        super(DIRB, self).__init__()
-        self.diagonal_lower_split = DiagonalLowerSplit()
-        self.diagonal_upper_split = DiagonalUpperSplit()
-
-    def rotate_tensor_90(self, tensor):
-        
-        return tensor.rot90(1, dims=(-2, -1))
-
-    def forward(self, x):    
-       
-        x1 = self.diagonal_lower_split(x)
-        x2 = self.diagonal_upper_split(x)
-        
-        x_rotated = self.rotate_tensor_90(x)
-        
-        x3 = self.diagonal_lower_split(x_rotated)
-        x4 = self.diagonal_upper_split(x_rotated)
-        
-        x_Diagonal1 = x1 + x4
-        x_Diagonal2 = x2 + x3
-        
-        return x_Diagonal1, x_Diagonal2
 
 
 
@@ -368,71 +314,7 @@ class AFFH(nn.Module):
         return out  
 
 
-class Decoder(nn.Module):
-    def __init__(self, channel):
-        super(Decoder, self).__init__()
-        
-        self.AFFH1 = AFFH(32)
-        self.AFFH2 = AFFH(96)
-        self.AFFH3 = AFFH(96)
-        self.AFFH4 = AFFH(96)
-        
-        self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
-        
-        # 32*11*11
-        self.decoder4 = nn.Sequential(
-            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),  
-            BasicConv2d(32, 32, 3, padding=1)  
-        )
-               
 
-        # 32*22*22
-        self.decoder3 = nn.Sequential(
-            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),  
-            BasicConv2d(96, 32, 3, padding=1) 
-        )
-        
-        # 32*44*44
-        self.decoder2 = nn.Sequential(
-            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),  
-            BasicConv2d(96, 32, 3, padding=1)  
-        )
-        
-        # 32*88*88
-        self.decoder1 = nn.Sequential(
-            BasicConv2d(96, 32, 3, padding=1)  
-        )
-        
-        self.conv = nn.Conv2d(channel, 1, 1)
-        self.upsample_4 = nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True)
-        
-
-    def forward(self, x4, x3, x2, x1):
-
-        x4_affh = self.AFFH1(x4)
-        x4_decoder = self.decoder4(x4_affh)  # 32*22*22
-        x4 = self.upsample(x4) #  32*22*22
-
-        x3_cat = torch.cat([x4_decoder, x3, x4], 1)   # 96*22*22
-        x3_affh = self.AFFH2(x3_cat)        
-        x3_decoder = self.decoder3(x3_affh)
-        x3 = self.upsample(x3) #  32*44*44
-
-        x2_cat = torch.cat([x3_decoder, x2, x3], 1) # 96*44*44
-        x2_affh = self.AFFH3(x2_cat)        
-        x2_decoder = self.decoder2(x2_affh)   # 32*88*88  
-        x2 = self.upsample(x2) #  32*88*88       
-
-        x1_cat = torch.cat([x2_decoder, x1, x2], 1) # 96*88*88
-        x1_affh = self.AFFH4(x1_cat)        
-        x1_decoder = self.decoder1(x1_affh)   # 32*88*88
-
-        
-        x = self.conv(x1_decoder) # 1*88*88
-        x = self.upsample_4(x) # 1*352*352
-
-        return x
-        
         
 
 class RoCAFENet(nn.Module):
@@ -512,3 +394,4 @@ class RoCAFENet(nn.Module):
 
 
         return prediction, self.sigmoid(prediction)
+
